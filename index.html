@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Online</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Framework -->
+    <link rel="stylesheet" href="bootstrap/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-md fixed top-0 w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="" class="navbar-logo">Kelompok<span>Kami</span></a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a class="border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#home">
+                            Home
+                        </a>
+                        <a class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#about">
+                            About
+                        </a>
+                        <a class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#product">
+                            Product
+                        </a>
+                        <a class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#contact">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#">
+                        <li data-feather="shopping-cart"></li>
+                    </a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form/index.html" target="_blank">
+                        <li data-feather="user"></li>
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" type="button" onclick="toggleMobileMenu()">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="sm:hidden" id="mobile-menu" style="display: none;">
+            <div class="pt-2 pb-3 space-y-1">
+                <a class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="#home">
+                    Home
+                </a>
+                <a class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="#about">
+                    About
+                </a>
+                <a class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="#product">
+                    Product
+                </a>
+                <a class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="#c ontact">
+                    Contact
+                </a>
+            </div>
+            <div class=" pt-4 pb-3 border-t border-gray-200">
+                <div class="flex items-center px-4">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#">
+                        <li data-feather="shopping-cart"></li>
+                    </a>
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#">
+                        <li data-feather="user"></li>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <main class="content">
+            <h1>Mari Belanja<br>Aksesoris <span>Di Sini</span></h1>
+            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit.</P>
+            <a href="" class="cta">Beli Sekarang</a>
+        </main>
+    </section>
+    <!-- HERO SECTION END -->
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h2><span>Tentang</span> Kami</h2>
+
+        <div class="row">
+            <div class="about-img">
+                <img src="img/about.jpg" alt="Tentang Kami">
+            </div>
+            <div class="content">
+                <h3>Kenapa Membeli Di Sini?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit rem blanditiis quos tenetur omnis iste!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quasi hic minima soluta! Ipsam delectus ut dolorum provident labore repellendus.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT END -->
+
+    <!-- PRODUCT -->
+    <section class="product" id="product">
+        <h2><span>Product</span> Kami</h2>
+        <p class="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, commodi.</p>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card border-0 rounded-0 shadow" style="width: 18rem;">
+                    <img src="img/product.jpg" class="card-img-top rounded-0" alt="Product">
+                    <div class="card-body mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-10">
+                                <h4 class="card-title">Product title</h4>
+                                <p class="card-text flex">
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <a href="" id="bookmark"><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center text-center g-0">
+                        <div class="col-4">
+                            <h5>Rp. 100.000</h5>
+                        </div>
+                        <div class="col-8">
+                            <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BELI SEKARANG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-0 rounded-0 shadow" style="width: 18rem;">
+                    <img src="img/product1.jpg" class="card-img-top rounded-0" alt="Product">
+                    <div class="card-body mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-10">
+                                <h4 class="card-title">Product title</h4>
+                                <p class="card-text flex">
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <a href="" id="bookmark"><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center text-center g-0">
+                        <div class="col-4">
+                            <h5>Rp. 100.000</h5>
+                        </div>
+                        <div class="col-8">
+                            <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BELI SEKARANG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-0 rounded-0 shadow" style="width: 18rem;">
+                    <img src="img/product2.jpg" class="card-img-top rounded-0" alt="Product">
+                    <div class="card-body mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-10">
+                                <h4 class="card-title">Product title</h4>
+                                <p class="card-text flex">
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                    <a href=""><i data-feather="star"></i></a>
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <a href="" id="bookmark"><i data-feather="bookmark"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center text-center g-0">
+                        <div class="col-4">
+                            <h5>Rp. 100.000</h5>
+                        </div>
+                        <div class="col-8">
+                            <a href="#" class="btn btn-dark w-100 p-3 rounded-0 text-warning">BELI SEKARANG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="" class="cta">Beli Sekarang</a>
+        </div>
+    </section>
+    <!-- PRODUCT END -->
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <h2><span>Contact</span> Kami</h2>
+        <p class="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, commodi.</p>
+
+        <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7606820004685!2d106.85944907409731!3d-6.295149261611151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed80b84ac47d%3A0x640561dd89719c88!2sUniversitas%20Indraprasta%20PGRI%20(UNINDRA)%2C%20Kampus%20B!5e0!3m2!1sid!2sid!4v1732630067191!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            
+            <form action="" class="form">
+                <div class="input-group">
+                    <i data-feather="user"></i>
+                    <input type="text" placeholder="Nama">
+                </div>
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="text" placeholder="E-Mail">
+                </div>
+                <div class="input-group">
+                    <i data-feather="phone"></i>
+                    <input type="text" placeholder="No.HP">
+                </div>
+                <button type="submit" class="btn">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+    <!-- CONTACT END -->
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h2 class="text-xl font-bold mb-4">Learning Robo</h2>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-2">Links</h3>
+                    <ul>
+                        <li><a href="#" class="hover:underline">Home</a></li>
+                        <li><a href="#" class="hover:underline">Contact</a></li>
+                        <li><a href="#" class="hover:underline">About Us</a></li>
+                        <li><a href="#" class="hover:underline">Get Started</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-2">Services</h3>
+                    <ul>
+                        <li><a href="#" class="hover:underline">App Design</a></li>
+                        <li><a href="#" class="hover:underline">Web Design</a></li>
+                        <li><a href="#" class="hover:underline">Logo Design</a></li>
+                        <li><a href="#" class="hover:underline">Banner Design</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-2">Other services</h3>
+                    <ul>
+                        <li><a href="#" class="hover:underline">SEO</a></li>
+                        <li><a href="#" class="hover:underline">Content Marketing</a></li>
+                        <li><a href="#" class="hover:underline">Prints</a></li>
+                        <li><a href="#" class="hover:underline">Social Media</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-2">Contact</h3>
+                    <ul>
+                        <li>+61 Bxxxxxxxxx</li>
+                        <li>+61 Bxxxxxxxxx</li>
+                        <li>example@gmail.com</li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-blue-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-blue-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-pink-500"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-blue-700"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-red-600"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 text-center text-sm">
+                <p>Copyright © 2021 learningrobo</p>
+                <p class="mt-2">Privacy policy</p>
+                <p class="mt-2">Made with <span class="text-red-500">❤</span> by Learning Robo</p>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER END -->
+    <script src="bootstrap/script.js"></script>
+    <script>
+        feather.replace();
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const isExpanded = mobileMenu.style.display === 'block';
+            mobileMenu.style.display = isExpanded ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

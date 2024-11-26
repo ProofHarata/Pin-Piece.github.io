@@ -1,0 +1,287 @@
+:root {
+    --primary: #b6895b;
+    --bg: #010101;
+}
+
+*, html, body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: #fff;
+}
+
+/* NAVBAR */
+nav .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: italic;
+}
+
+nav .navbar-logo span {
+    color: var(--primary);
+}
+/* NAVBAR END */
+
+/* HERO SECTION */
+.hero{
+    min-height: 100vh;
+    display: flex; 
+    align-items: center;
+    background-image: url(img/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: static;
+}
+
+.hero::after{
+    content: '';
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 50%);
+}
+
+.hero .content{
+    padding: 1.4rem 7%;
+    max-width: 60rem;
+}
+
+.hero .content h1{
+    font-size: 5rem;
+    color: #fff;
+    font-weight: bold;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+}
+
+.hero .content h1 span{
+    color: var(--primary);
+}
+
+.hero .content p{
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #757575;
+    text-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+}
+
+.hero .content .cta {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+}
+/* HERO SECTION END */
+
+/* ABOUT */
+.about, 
+.product, 
+.contact {
+    padding: 7rem 7% 1.4rem;
+    color: #fff;
+    background-color: var(--bg);
+}
+.about h2 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+.about h2 span, 
+.product h2 span, 
+.contact h2 span {
+    color: var(--primary);
+}
+
+
+.about .row{
+    display: flex;
+}
+.about .row .about-img{
+    flex: 1 1 38rem;
+}
+.about .row .about-img img{
+    width: 100%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #010101;
+}
+.about .row .content{
+    flex: 1 1 28rem;
+    padding: 0 1rem;
+}
+.about .row .content h3{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.about .row .content p{
+    color: #757575;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 100;
+    line-height: 1.6;
+}
+/* ABOUT END */
+
+/* PRODUCT */
+.product h2, 
+.contact h2 {
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+.product .text,
+.contact .text {
+    text-align: center;
+    max-width: 30rem;
+    margin: auto;
+    font-weight: 100;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+.product .card{
+    margin: auto;
+}
+.product .card-img-top {
+    height: 200px; /* Atur tinggi gambar */
+    object-fit: cover; /* Memastikan gambar tetap proporsional */
+    overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari batas */
+}
+
+.product .cta{
+    text-align: center;
+    padding: 1rem 1.5rem;
+    margin: 2rem auto;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+}
+/* PRODUCT  END */
+
+/* CONTACT */
+.contact .row{
+    display: flex;
+    margin-top: 2rem;
+    background-color: #222;
+}
+.contact .row .map{
+    flex: 1 1 35rem;
+    width: 100%;
+    object-fit: cover;
+    margin-right: 2rem;
+}
+.contact .row .form{
+    flex: 1 1 35rem;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+.contact .row .form .input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: var(--bg);
+    border: 1px solid #fff;
+    padding-left: 2rem;
+}
+.contact .row .form .input-group input {
+    width: 80%;
+    padding: 1rem;
+    font-size: 1.7rem;
+    background: none;
+}
+.contact .row .form .btn{
+    margin-top: 3rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background-color: var(--primary);
+    cursor: pointer;
+}
+/* CONTACT END */
+
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navigation li {
+        padding: 10px;
+    }
+
+    .about .TentangKami {
+        width: 90%;
+    }
+
+    .contact-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .contact button {
+        padding: 15px;
+    }
+    .contact .row .map{
+        height: 20rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        font-size: 18px;
+    }
+
+    .logo a {
+        font-size: 24px;
+    }
+
+    .navigation li a {
+        font-size: 20px;
+    }
+
+    .contact-container {
+        padding: 10px;
+    }
+
+    .contact input[type="text"],
+    .contact input[type="email"],
+    .contact textarea {
+        padding: 8px;
+    }
+
+    .contact button {
+        padding: 12px;
+    }
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+}

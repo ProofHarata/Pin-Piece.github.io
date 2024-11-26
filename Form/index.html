@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form</title>
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ISI KONTEN -->
+    <div class="container">
+      <div class="form" id="form">
+        <!-- LOGIN FORM -->
+        <div id="loginForm">
+          <header id="login">LOGIN</header>
+
+          <hr style="margin-bottom: 20px;" id="garis1">
+
+          <i data-feather="user" style="float: left;margin: 5px;" id="user"></i>
+          <input type="text" placeholder="username" id="usernameInput">
+          <i data-feather="lock" style="float: left;margin: 5px;" id="lock"></i>
+          <input type="password" placeholder="password" id="passwordInput">
+
+          <p id="text">Belum Punya Akun?<span onclick="formRegis()" id="regis">Daftar</span></p>
+
+          <button id="loginButton" onclick="onLogin()">LOGIN</button>
+        </div>
+        <!-- LOGIN FORM END -->
+
+        <!-- REGISTER FORM -->
+        <header id="registrasi">DAFTAR</header>
+
+        <hr style="margin-bottom: 20px;" id="garis">
+        
+        <i data-feather="user" style="float: left;margin: 5px;" id="userR"></i>
+        <input type="text" placeholder="Username" id="userInput">
+        <i data-feather="lock" style="float: left;margin: 5px;" id="lockR"></i>
+        <input type="password" placeholder="Password" id="passInput">
+        <i data-feather="mail" style="float: left;margin: 5px;" id="mail"></i>
+        <input type="text" placeholder="E-Mail" id="emailInput">
+        
+        <button id="daftarButton" onclick="onDaftar()">DAFTAR</button>
+
+        <p id="text1">Sudah Punya Akun?<span onclick="formLogin()" id="login">Login</span></p>
+        <!-- REGISTER FORM END -->
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      feather.replace();
+    </script>
+    <script type="application/javascript" src="data.js"></script>
+</body>
+</html>
