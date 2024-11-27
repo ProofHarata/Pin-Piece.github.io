@@ -222,15 +222,20 @@ nav .navbar-logo span {
     nav {
         flex-direction: column;
         height: auto;
+        width: 100%; /* Tambahkan ini untuk mengatur lebar navbar */
+        overflow: hidden; /* Tambahkan ini untuk menghindari overflow */
     }
 
     .navigation {
         flex-direction: column;
         align-items: center;
+        width: 100%; /* Tambahkan ini untuk memastikan navigation tidak melampaui batas */
     }
 
     .navigation li {
         padding: 10px;
+        width: 100%; /* Tambahkan ini untuk memastikan item list tidak melampaui batas */
+        text-align: center; /* Tambahkan ini untuk meratakan teks di tengah */
     }
 
     .about .TentangKami {
@@ -240,12 +245,13 @@ nav .navbar-logo span {
     .contact-container {
         margin: 20px;
         padding: 15px;
+        width: 100%; /* Pastikan kontainer kontak juga responsif */
     }
 
     .contact button {
         padding: 15px;
     }
-    .contact .row .map{
+    .contact .row .map {
         height: 20rem;
     }
 }
@@ -253,6 +259,7 @@ nav .navbar-logo span {
 @media (max-width: 480px) {
     nav {
         font-size: 18px;
+        width: 100%; /* Pastikan navbar tetap 100% */
     }
 
     .logo a {
@@ -265,6 +272,7 @@ nav .navbar-logo span {
 
     .contact-container {
         padding: 10px;
+        width: 100%; /* Pastikan kontainer kontak tetap responsif */
     }
 
     .contact input[type="text"],
