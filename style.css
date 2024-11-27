@@ -239,7 +239,7 @@ nav .navbar-logo span {
     }
 
     .about .TentangKami {
-        width: 90%;
+        width: 100%;
     }
 
     .contact-container {
@@ -286,7 +286,62 @@ nav .navbar-logo span {
     }
 }
 
+@media (max-width: 720px) {
+    /* Aturan untuk layar kecil seperti Tecno Pova 4 */
+    
+    .hero .content h1 {
+        font-size: 3.5rem; /* Mengurangi ukuran font untuk judul */
+    }
 
+    .hero .content p {
+        font-size: 1.1rem; /* Mengurangi ukuran font untuk paragraf */
+    }
+
+    .about h2, .product h2, .contact h2 {
+        font-size: 2.2rem; /* Mengurangi ukuran font untuk judul bagian */
+    }
+
+    .about .row {
+        flex-direction: column; /* Mengubah arah baris menjadi kolom untuk tampilan yang lebih baik */
+    }
+
+    .about .row .about-img,
+    .about .row .content {
+        flex: 1 1 100%; /* Membuat gambar dan konten mengambil 100% lebar */
+        margin-bottom: 2rem; /* Menambahkan margin bawah untuk spasi */
+    }
+
+    .contact .row {
+        flex-direction: column; /* Mengubah arah baris menjadi kolom untuk tampilan yang lebih baik */
+    }
+
+    .contact .row .map,
+    .contact .row .form {
+        flex: 1 1 100%; /* Membuat peta dan formulir mengambil 100% lebar */
+        margin-bottom: 2rem; /* Menambahkan margin bawah untuk spasi */
+    }
+
+    .contact .row .form .input-group input {
+        font-size: 1.5rem; /* Mengurangi ukuran font untuk input */
+    }
+
+    .contact .row .form .btn {
+        font-size: 1.5rem; /* Mengurangi ukuran font untuk tombol */
+    }
+
+    .product .text,
+    .contact .text {
+        font-size: 1.2rem; /* Mengurangi ukuran font untuk teks */
+    }
+
+    .product .card {
+        margin: 0; /* Menghapus margin untuk kartu produk */
+    }
+
+    .product .cta {
+        font-size: 1.2rem; /* Mengurangi ukuran font untuk tombol CTA */
+    }
+}
 
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
