@@ -28,6 +28,63 @@ nav .navbar-logo {
 nav .navbar-logo span {
     color: var(--primary);
 }
+
+.cart-container {
+    display: none; /* Awalnya disembunyikan */
+    width: 300px;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.cart-header i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cart-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.cart-content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cart-content h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.cart-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart-content button:hover {
+    background-color: #f0f0f0;
+}
 /* NAVBAR END */
 
 /* HERO SECTION */
@@ -104,7 +161,8 @@ nav .navbar-logo span {
 }
 .about h2 span, 
 .product h2 span, 
-.contact h2 span {
+.contact h2 span,
+.content h2 span {
     color: var(--primary);
 }
 
@@ -139,7 +197,8 @@ nav .navbar-logo span {
 
 /* PRODUCT */
 .product h2, 
-.contact h2 {
+.contact h2,
+.content h2 {
     text-align: center;
     font-size: 2.6rem;
     font-weight: bold;
@@ -169,7 +228,7 @@ nav .navbar-logo span {
     margin: 2rem auto;
     font-size: 1.4rem;
     color: #fff;
-    background-color: var(--primary);
+    border: 10px solid var(--primary);
     border-radius: 0.5rem;
     box-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
 }
@@ -217,6 +276,33 @@ nav .navbar-logo span {
 }
 /* CONTACT END */
 
+/* CONTENT */
+.content .container .main{
+    padding: 1rem;
+    border-radius: 5px;
+}
+.content .container .main .col .custom-card{
+    border-radius: 15px;
+}
+.content .container .main .col .card-main:hover {
+    box-shadow: 0px 0px 35px -4px rgba(0,0,0,0.45);
+-webkit-box-shadow: 0px 0px 35px -4px rgba(0,0,0,0.45);
+-moz-box-shadow: 0px 0px 35px -4px rgba(0,0,0,0.45);
+}
+.content .container .main .col .card-img-top {
+    height: 200px; /* Atur tinggi gambar */
+    object-fit: cover; /* Memastikan gambar tetap proporsional */
+    overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari batas */
+}
+.content .container .list-group a:hover{
+    font-weight: 500;
+    text-decoration: underline;
+}
+.content .container .list-group li {
+    margin-top: 10px;
+}
+/* CONTENT END */
+
 /* MEDIA QUERY */
 @media (max-width: 768px) {
     nav {
@@ -253,6 +339,48 @@ nav .navbar-logo span {
     }
     .contact .row .map {
         height: 20rem;
+    }
+
+    .cart-container {
+        width: 100%; /* Lebar penuh untuk perangkat mobile */
+        height: auto; /* Tinggi otomatis */
+        position: fixed; /* Tetap di posisi tetap */
+        top: 0; /* Posisi atas */
+        right: 0; /* Posisi kanan */
+        padding: 10px; /* Padding lebih kecil */
+    }
+
+    .cart-header {
+        flex-direction: column; /* Susun header secara vertikal */
+        align-items: flex-start; /* Rata kiri */
+    }
+
+    .cart-header p {
+        font-size: 12px; /* Ukuran font lebih kecil */
+        margin-top: 5px; /* Jarak atas */
+    }
+
+    .cart-content h2 {
+        font-size: 16px; /* Ukuran font lebih kecil */
+    }
+
+    .cart-content button {
+        font-size: 14px; /* Ukuran font lebih kecil */
+        padding: 8px; /* Padding lebih kecil */
+    }
+
+    .content .container .col-3 {
+        margin-bottom: 20px; /* Add space below the sidebar */
+    }
+    .content .container .row .col-12 .custom-list-group {
+        flex-direction: row; /* Arrange items in a row */
+    }
+    .content .container .row .col-12 .custom-list-group li {
+        margin-right: 10px; /* Add space between items */
+    }
+    .content .container .row .col-12 .custom-list-group li a:hover{
+        font-weight: 500;
+        text-decoration: underline;
     }
 }
 

@@ -46,9 +46,23 @@
                     </div>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#" id="shopping-cart">
                         <li data-feather="shopping-cart"></li>
                     </a>
+                    <div class="cart-container" id="cart-container">
+                        <div class="cart-header">
+                            <i class="fas fa-times" id="close-cart"></i>
+                            <p>Diskon, Untuk pembelian 5 Juta Keatas</p>
+                        </div>
+                        <div class="cart-content">
+                            <h2>Belanjaan Kamu Kosong</h2>
+                            <button>SHOP MEN'S</button>
+                            <button>SHOP WOMEN'S</button>
+                            <button>SHOP SOCKS</button>
+                            <button>SHOP MEN'S SALE</button>
+                            <button>SHOP WOMEN'S SALE</button>
+                        </div>
+                    </div>
                     <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form/index.html" target="_blank">
                         <li data-feather="user"></li>
                     </a>
@@ -95,7 +109,7 @@
         <main class="content">
             <h1>Mari Belanja<br>Aksesoris <span>Di Sini</span></h1>
             <P>Lorem ipsum dolor sit amet consectetur adipisicing elit.</P>
-            <a href="" class="cta">Beli Sekarang</a>
+            <a href="https://wa.me/6281413263843" class="cta">Beli Sekarang</a>
         </main>
     </section>
     <!-- HERO SECTION END -->
@@ -213,7 +227,9 @@
                     </div>
                 </div>
             </div>
-            <a href="" class="cta">Beli Sekarang</a>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a class="btn btn-outline-secondary btn-lg" type="button" href="kategori.html">Selengkapnya...</a>
+            </div>
         </div>
     </section>
     <!-- PRODUCT END -->
@@ -250,55 +266,28 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap justify-between">
                 <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h2 class="text-xl font-bold mb-4">Learning Robo</h2>
+                    <h2 class="text-xl font-bold mb-4">Kelompok Kami</h2>
                 </div>
                 <div class="w-full md:w-1/4 mb-6 md:mb-0">
                     <h3 class="text-lg font-semibold mb-2">Links</h3>
                     <ul>
-                        <li><a href="#" class="hover:underline">Home</a></li>
-                        <li><a href="#" class="hover:underline">Contact</a></li>
-                        <li><a href="#" class="hover:underline">About Us</a></li>
-                        <li><a href="#" class="hover:underline">Get Started</a></li>
-                    </ul>
-                </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-lg font-semibold mb-2">Services</h3>
-                    <ul>
-                        <li><a href="#" class="hover:underline">App Design</a></li>
-                        <li><a href="#" class="hover:underline">Web Design</a></li>
-                        <li><a href="#" class="hover:underline">Logo Design</a></li>
-                        <li><a href="#" class="hover:underline">Banner Design</a></li>
-                    </ul>
-                </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-lg font-semibold mb-2">Other services</h3>
-                    <ul>
-                        <li><a href="#" class="hover:underline">SEO</a></li>
-                        <li><a href="#" class="hover:underline">Content Marketing</a></li>
-                        <li><a href="#" class="hover:underline">Prints</a></li>
-                        <li><a href="#" class="hover:underline">Social Media</a></li>
+                        <li><a href="index.html#home" class="hover:underline">Home</a></li>
+                        <li><a href="index.html#about" class="hover:underline">About</a></li>
+                        <li><a href="index.html#product" class="hover:underline">Product</a></li>
+                        <li><a href="index.html#contact" class="hover:underline">Contact</a></li>
                     </ul>
                 </div>
                 <div class="w-full md:w-1/4 mb-6 md:mb-0">
                     <h3 class="text-lg font-semibold mb-2">Contact</h3>
                     <ul>
                         <li>+61 Bxxxxxxxxx</li>
-                        <li>+61 Bxxxxxxxxx</li>
                         <li>example@gmail.com</li>
                     </ul>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-blue-500"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-blue-400"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-pink-500"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-blue-700"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-red-600"><i class="fab fa-youtube"></i></a>
-                    </div>
                 </div>
             </div>
             <div class="mt-10 text-center text-sm">
-                <p>Copyright © 2021 learningrobo</p>
-                <p class="mt-2">Privacy policy</p>
-                <p class="mt-2">Made with <span class="text-red-500">❤</span> by Learning Robo</p>
+                <p>Copyright © 2023 Kelompok Kami</p>
+                <p>Privacy policy | Made with <span class="text-red-500">❤</span></p>
             </div>
         </div>
     </footer>
