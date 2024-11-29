@@ -213,25 +213,68 @@ nav .navbar-logo span {
     line-height: 1.6;
     margin-bottom: 3rem;
 }
-.product .card{
-    margin: auto;
-}
-.product .card-img-top {
-    height: 200px; /* Atur tinggi gambar */
-    object-fit: cover; /* Memastikan gambar tetap proporsional */
-    overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari batas */
-}
 
-.product .cta{
+.product .col{
+    position: relative;
     text-align: center;
-    padding: 1rem 1.5rem;
-    margin: 2rem auto;
-    font-size: 1.4rem;
-    color: #fff;
-    border: 10px solid var(--primary);
-    border-radius: 0.5rem;
-    box-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+    padding: 0 5px;
+    overflow: hidden;
 }
+.product .col h2{
+    position: absolute; /* Mengatur posisi absolut untuk elemen h2 */
+    top: 10%; /* Mengatur jarak dari atas gambar */
+    left: 50%; /* Memposisikan elemen di tengah secara horizontal */
+    transform: translateX(-50%); /* Menggeser elemen ke kiri setengah lebar elemen itu sendiri */
+    color: #fff; /* Mengatur warna teks */
+    width: 80%;
+    font-size: 2rem;
+    z-index: 1;
+}
+.product .col p{
+    position: absolute;
+    top: 18%; /* Mengatur jarak dari atas gambar */
+    left: 50%; /* Memposisikan elemen di tengah secara horizontal */
+    transform: translateX(-50%);
+    font-size: 18px;
+    width: 80%;
+    font-weight: 500;
+    z-index: 1;
+}
+.product .col img{
+    width: 100%;
+    height: 100%;
+    display: block; /* Mengatur gambar menjadi blok elemen */
+    margin: 0 auto; /* Memusatkan gambar secara horizontal */
+    transition: transform 0.3s ease; /* Menambahkan transisi untuk efek zoom */
+    object-fit: cover;
+}
+.product .col .cta{
+    position: absolute; /* Mengatur posisi absolut untuk elemen a */
+    bottom: 20px; /* Mengatur jarak dari bawah gambar */
+    left: 50%;
+    font-size: 18px; /* Memposisikan elemen di tengah secara horizontal */
+    transform: translateX(-50%); /* Menggeser elemen ke kiri setengah lebar elemen itu sendiri */
+    background-color: white; /* Mengatur warna latar belakang tombol */
+    color: black; /* Mengatur warna teks tombol */
+    border: 3px solid black; /* Menghapus border tombol */
+    padding: 10px 20px; /* Menambahkan padding untuk mempercantik tampilan */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    cursor: pointer;
+    font-weight: 500;
+}
+.product .col .cta:hover{
+    background-color: black;
+    color: white;
+    transition: all ease-in-out 0.3s;
+}
+.product .col:hover img{
+    transform: scale(1.1);   
+}
+.col:hover .cta {
+    opacity: 1; /* Mengatur tombol untuk terlihat saat di-hover */
+}   
+
 /* PRODUCT  END */
 
 /* CONTACT */
