@@ -23,3 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
         cartContainer.style.display = 'none'; // Sembunyikan cart-container
     });
 });
+
+function productTopi() {
+    window.location.href = 'product/topi.html'
+}
+function productKacamata() {
+    window.location.href = 'product/kacamata.html'
+}
+function productJamTangan() {
+    window.location.href = 'product/jamTangan.html'
+}

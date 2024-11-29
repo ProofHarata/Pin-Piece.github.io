@@ -277,6 +277,10 @@ nav .navbar-logo span {
 /* CONTACT END */
 
 /* CONTENT */
+.content .row .breadcrumb .breadcrumb-item a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
 .content .container .main{
     padding: 1rem;
     border-radius: 5px;
@@ -295,7 +299,7 @@ nav .navbar-logo span {
     overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari batas */
 }
 .content .container .list-group a:hover{
-    font-weight: 500;
+    font-weight: bold;
     text-decoration: underline;
 }
 .content .container .list-group li {
