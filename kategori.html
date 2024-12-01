@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kategori Product</title>
+    <title>Pin & Piece</title>
+    <link rel="icon" href="img/circular_logo.png" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
 
     <!-- My Style -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style1.css">
     
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -49,7 +50,7 @@
                     <a class="px-3 py-2 rounded-md text-sm font-medium" href="#" id="shopping-cart">
                         <li data-feather="shopping-cart"></li>
                     </a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form/index.html" target="_blank">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form.html" target="_blank">
                         <li data-feather="user"></li>
                     </a>
                 </div>
@@ -87,6 +88,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- SHOPPING CART -->
+        <div class="shopping-cart-buy">
+            <div class="cart-item">
+                <img src="img/product (1).jpg" alt="Product 1">
+                <div class="item-detail">
+                    <h3>Product 1</h3>
+                    <div class="item-price">Rp. 100.000</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+                <img src="img/product (1).jpg" alt="Product 1">
+                <div class="item-detail">
+                    <h3>Product 1</h3>
+                    <div class="item-price">Rp. 100.000</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+                <img src="img/product (1).jpg" alt="Product 1">
+                <div class="item-detail">
+                    <h3>Product 1</h3>
+                    <div class="item-price">Rp. 100.000</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+        </div>
+        <!-- SHOPPING CART END -->
     </nav>
     <!-- END NAVBAR -->
 
@@ -118,9 +148,30 @@
                             <li class="breadcrumb-item active fw-semibold" aria-current="page">Topi</li>
                         </ol>
                     </nav>
+                    <nav aria-label="breadcrumb" id="Sidebar-kalung">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
+                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Kalung</li>
+                        </ol>
+                    </nav>
+                    <nav aria-label="breadcrumb" id="Sidebar-cincin">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
+                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Cincin</li>
+                        </ol>
+                    </nav>
+                    <nav aria-label="breadcrumb" id="Sidebar-gelang">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
+                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Gelang</li>
+                        </ol>
+                    </nav>
                     <h3 class="font-bold" style="font-size: 30px;">Aksesoris Unisex</h3>
                     <ul class="list-group custom-list-group">
                         <li><a href="#" onclick="sidebarTopi()">Topi</a></li>
+                        <li><a href="#" onclick="sidebarCincin()">Cincin</a></li>
+                        <li><a href="#" onclick="sidebarGelang()">Gelang</a></li>
+                        <li><a href="#" onclick="sidebarKalung()">Kalung</a></li>
                         <li><a href="#" onclick="sidebarKacamata()">Kacamata</a></li>
                         <li><a href="#" onclick="sidebarJamTangan()">Jam tangan</a></li>
                     </ul>
@@ -131,7 +182,7 @@
                     </div>
                     <div class="main row row-cols-1 row-cols-md-3 g-4">
                         <!-- Product Cards -->
-                        <div class="col Product-JamTangan">
+                        <div class="col Product-JamTangan product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (1).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -161,7 +212,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Kacamata">
+                        <div class="col Product-Kacamata product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (2).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -191,7 +242,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Topi">
+                        <div class="col Product-Topi product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (3).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -221,7 +272,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-JamTangan">
+                        <div class="col Product-JamTangan product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (4).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -251,7 +302,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Kacamata">
+                        <div class="col Product-Kacamata product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (5).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -281,7 +332,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Topi">
+                        <div class="col Product-Topi product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (6).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -311,7 +362,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Topi">
+                        <div class="col Product-Topi product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (7).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -341,7 +392,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Kacamata">
+                        <div class="col Product-Kacamata product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (8).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -371,7 +422,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Kacamata">
+                        <div class="col Product-Kacamata product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (9).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -401,7 +452,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Kacamata">
+                        <div class="col Product-Kacamata product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (10).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -431,7 +482,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-Topi">
+                        <div class="col Product-Topi product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (11).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -461,7 +512,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-JamTangan">
+                        <div class="col Product-JamTangan product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (12).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -491,7 +542,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-JamTangan">
+                        <div class="col Product-JamTangan product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (13).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -521,7 +572,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-JamTangan">
+                        <div class="col Product-JamTangan product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (14).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -551,7 +602,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col Product-JamTangan">
+                        <div class="col Product-JamTangan product">
                             <div class="card-main card border-0" style="width: 100%;">
                                 <img src="img/product (15).jpg" class="card-img-top" alt="Product">
                                 <div class="card-body mt-3 mb-3">
@@ -620,8 +671,9 @@
         </div>
     </footer>
     <!-- FOOTER END -->
+    
     <script src="bootstrap/script.js"></script>
-    <script src="script.js"></script>
+    <script src="JavaScript/kategori.js"></script>
     <script>
         feather.replace();
         function toggleMobileMenu() {

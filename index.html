@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Aksesoris</title>
+    <title>Pin & Piece</title>
+    <link rel="icon" href="img/circular_logo.png" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
 
     <!-- My Style -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
     
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -56,12 +57,15 @@
                         </div>
                         <div class="cart-content">
                             <h2>Belanjaan Kamu Kosong</h2>
-                            <button onclick="productTopi()">Topi</button>
-                            <button onclick="productKacamata()">Kacamata</button>
-                            <button onclick="productJamTangan()">Jam Tangan</button>
+                            <button onclick="product()">Topi</button>
+                            <button onclick="product()">Gelang</button>
+                            <button onclick="product()">Kalung</button>
+                            <button onclick="product()">Cincin</button>
+                            <button onclick="product()">Kacamata</button>
+                            <button onclick="product()">Jam Tangan</button>
                         </div>
                     </div>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form/index.html" target="_blank">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form.html" target="_blank">
                         <li data-feather="user"></li>
                     </a>
                 </div>
@@ -156,6 +160,27 @@
                 
                 <a href="kategori.html" class="cta">BELI SEKARANG</a>
             </div>
+            <div class="col">
+                <h2>Gelang</h2>
+                <p>Precision details for unmatched performance</p>
+                <img src="img/kategori (4).jpeg" alt="Product">
+                
+                <a href="kategori.html" class="cta">BELI SEKARANG</a>
+            </div>
+            <div class="col">
+                <h2>Kalung</h2>
+                <p>Precision details for unmatched performance</p>
+                <img src="img/kategori (5).jpeg" alt="Product">
+                
+                <a href="kategori.html" class="cta">BELI SEKARANG</a>
+            </div>
+            <div class="col">
+                <h2>Cincin</h2>
+                <p>Precision details for unmatched performance</p>
+                <img src="img/kategori (6).jpeg" alt="Product">
+                
+                <a href="kategori.html" class="cta">BELI SEKARANG</a>
+            </div>
         </div>
     </section>
     <!-- PRODUCT END -->
@@ -219,7 +244,7 @@
     </footer>
     <!-- FOOTER END -->
     <script src="bootstrap/script.js"></script>
-    <script src="script.js"></script>
+    <script src="JavaScript/index.js"></script>
     <script>
         feather.replace();
         function toggleMobileMenu() {

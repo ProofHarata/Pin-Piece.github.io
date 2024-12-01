@@ -62,7 +62,7 @@ function onDaftar() {
 function onLogin() {
     if (usernameInput.value == userInput.value && passwordInput.value == passInput.value) {
         // Redirect to another page if login is successful
-        window.location.href = '../index.html'; 
+        window.location.href = 'index.html'; 
     } else {
         alert('Invalid username or password');
     }

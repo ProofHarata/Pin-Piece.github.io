@@ -1,0 +1,495 @@
+:root {
+    --primary: #b6895b;
+    --bg: #010101;
+}
+
+*, html, body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: #fff;
+}
+
+/* NAVBAR */
+nav .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: italic;
+}
+
+nav .navbar-logo span {
+    color: var(--primary);
+}
+
+.cart-container {
+    display: none; /* Awalnya disembunyikan */
+    width: 300px;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.cart-header i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cart-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.cart-content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cart-content h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.cart-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.cart-content button:hover {
+    background-color: #f0f0f0;
+}
+/* NAVBAR END */
+
+/* HERO SECTION */
+.hero{
+    min-height: 100vh;
+    display: flex; 
+    align-items: center;
+    background-image: url(../img/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: static;
+}
+
+.hero::after{
+    content: '';
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 50%);
+}
+
+.hero .content{
+    padding: 1.4rem 7%;
+    max-width: 60rem;
+}
+
+.hero .content h1{
+    font-size: 5rem;
+    color: #fff;
+    font-weight: bold;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+}
+
+.hero .content h1 span{
+    color: var(--primary);
+}
+
+.hero .content p{
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #757575;
+    text-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+}
+
+.hero .content .cta {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px rgba(1,1,3,0.5%);
+}
+/* HERO SECTION END */
+
+/* ABOUT */
+.about, 
+.product, 
+.contact {
+    padding: 7rem 7% 1.4rem;
+    color: #fff;
+    background-color: var(--bg);
+}
+.about h2 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+.about h2 span, 
+.product h2 span, 
+.contact h2 span{
+    color: var(--primary);
+}
+
+
+.about .row{
+    display: flex;
+}
+.about .row .about-img{
+    flex: 1 1 38rem;
+}
+.about .row .about-img img{
+    width: 100%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #010101;
+}
+.about .row .content{
+    flex: 1 1 28rem;
+    padding: 0 1rem;
+}
+.about .row .content h3{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.about .row .content p{
+    color: #757575;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 100;
+    line-height: 1.6;
+}
+/* ABOUT END */
+
+/* PRODUCT */
+.product h2, 
+.contact h2{
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+.product .text,
+.contact .text {
+    text-align: center;
+    max-width: 30rem;
+    margin: auto;
+    font-weight: 100;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.product .col{
+    position: relative;
+    text-align: center;
+    padding: 0 5px;
+    overflow: hidden;
+    width: 394.72px;
+    height: 577.08px;
+}
+.product .col h2{
+    position: absolute; /* Mengatur posisi absolut untuk elemen h2 */
+    top: 10%; /* Mengatur jarak dari atas gambar */
+    left: 50%; /* Memposisikan elemen di tengah secara horizontal */
+    transform: translateX(-50%); /* Menggeser elemen ke kiri setengah lebar elemen itu sendiri */
+    color: #fff; /* Mengatur warna teks */
+    width: 80%;
+    font-size: 2rem;
+    z-index: 1;
+}
+.product .col p{
+    position: absolute;
+    top: 18%; /* Mengatur jarak dari atas gambar */
+    left: 50%; /* Memposisikan elemen di tengah secara horizontal */
+    transform: translateX(-50%);
+    font-size: 18px;
+    width: 80%;
+    font-weight: 500;
+    z-index: 1;
+}
+.product .col img{
+    width: 100%;
+    height: 100%;
+    display: block; /* Mengatur gambar menjadi blok elemen */
+    margin: 0 auto; /* Memusatkan gambar secara horizontal */
+    transition: transform 0.3s ease; /* Menambahkan transisi untuk efek zoom */
+    object-fit: cover;
+}
+.product .col .cta{
+    position: absolute; /* Mengatur posisi absolut untuk elemen a */
+    bottom: 20px; /* Mengatur jarak dari bawah gambar */
+    left: 50%;
+    font-size: 18px; /* Memposisikan elemen di tengah secara horizontal */
+    transform: translateX(-50%); /* Menggeser elemen ke kiri setengah lebar elemen itu sendiri */
+    background-color: white; /* Mengatur warna latar belakang tombol */
+    color: black; /* Mengatur warna teks tombol */
+    border: 3px solid black; /* Menghapus border tombol */
+    padding: 10px 20px; /* Menambahkan padding untuk mempercantik tampilan */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    cursor: pointer;
+    font-weight: 500;
+}
+.product .col .cta:hover{
+    background-color: black;
+    color: white;
+    transition: all ease-in-out 0.3s;
+}
+.product .col:hover img{
+    transform: scale(1.1);   
+}
+.col:hover .cta {
+    opacity: 1; /* Mengatur tombol untuk terlihat saat di-hover */
+}   
+
+/* PRODUCT  END */
+
+/* CONTACT */
+.contact .row{
+    display: flex;
+    margin-top: 2rem;
+    background-color: #222;
+}
+.contact .row .map{
+    flex: 1 1 35rem;
+    width: 100%;
+    object-fit: cover;
+    margin-right: 2rem;
+}
+.contact .row .form{
+    flex: 1 1 35rem;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+.contact .row .form .input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: var(--bg);
+    border: 1px solid #fff;
+    padding-left: 2rem;
+}
+.contact .row .form .input-group input {
+    width: 80%;
+    padding: 1rem;
+    font-size: 1.7rem;
+    background: none;
+}
+.contact .row .form .btn{
+    margin-top: 3rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background-color: var(--primary);
+    cursor: pointer;
+}
+/* CONTACT END */
+
+
+
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+        width: 100%; /* Tambahkan ini untuk mengatur lebar navbar */
+        overflow: hidden; /* Tambahkan ini untuk menghindari overflow */
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+        width: 100%; /* Tambahkan ini untuk memastikan navigation tidak melampaui batas */
+    }
+
+    .navigation li {
+        padding: 10px;
+        width: 100%; /* Tambahkan ini untuk memastikan item list tidak melampaui batas */
+        text-align: center; /* Tambahkan ini untuk meratakan teks di tengah */
+    }
+
+    .about .TentangKami {
+        width: 100%;
+    }
+
+    .contact-container {
+        margin: 20px;
+        padding: 15px;
+        width: 100%; /* Pastikan kontainer kontak juga responsif */
+    }
+
+    .contact button {
+        padding: 15px;
+    }
+    .contact .row .map {
+        height: 20rem;
+    }
+
+    .cart-container {
+        width: 100%; /* Lebar penuh untuk perangkat mobile */
+        height: auto; /* Tinggi otomatis */
+        position: fixed; /* Tetap di posisi tetap */
+        top: 0; /* Posisi atas */
+        right: 0; /* Posisi kanan */
+        padding: 10px; /* Padding lebih kecil */
+    }
+
+    .cart-header {
+        flex-direction: column; /* Susun header secara vertikal */
+        align-items: flex-start; /* Rata kiri */
+    }
+
+    .cart-header p {
+        font-size: 12px; /* Ukuran font lebih kecil */
+        margin-top: 5px; /* Jarak atas */
+    }
+
+    .cart-content h2 {
+        font-size: 16px; /* Ukuran font lebih kecil */
+    }
+
+    .cart-content button {
+        font-size: 14px; /* Ukuran font lebih kecil */
+        padding: 8px; /* Padding lebih kecil */
+    }
+
+    .content .container .col-3 {
+        margin-bottom: 20px; /* Add space below the sidebar */
+    }
+    .content .container .row .col-12 .custom-list-group {
+        flex-direction: row; /* Arrange items in a row */
+    }
+    .content .container .row .col-12 .custom-list-group li {
+        margin-right: 10px; /* Add space between items */
+    }
+    .content .container .row .col-12 .custom-list-group li a:hover{
+        font-weight: 500;
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        font-size: 18px;
+        width: 100%; /* Pastikan navbar tetap 100% */
+    }
+
+    .logo a {
+        font-size: 24px;
+    }
+
+    .navigation li a {
+        font-size: 20px;
+    }
+
+    .contact-container {
+        padding: 10px;
+        width: 100%; /* Pastikan kontainer kontak tetap responsif */
+    }
+
+    .contact input[type="text"],
+    .contact input[type="email"],
+    .contact textarea {
+        padding: 8px;
+    }
+
+    .contact button {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 720px) {
+    /* Aturan untuk layar kecil seperti Tecno Pova 4 */
+    
+    .hero .content h1 {
+        font-size: 3.5rem; /* Mengurangi ukuran font untuk judul */
+    }
+
+    .hero .content p {
+        font-size: 1.1rem; /* Mengurangi ukuran font untuk paragraf */
+    }
+
+    .about h2, .product h2, .contact h2 {
+        font-size: 2.2rem; /* Mengurangi ukuran font untuk judul bagian */
+    }
+
+    .about .row {
+        flex-direction: column; /* Mengubah arah baris menjadi kolom untuk tampilan yang lebih baik */
+    }
+
+    .about .row .about-img,
+    .about .row .content {
+        flex: 1 1 100%; /* Membuat gambar dan konten mengambil 100% lebar */
+        margin-bottom: 2rem; /* Menambahkan margin bawah untuk spasi */
+    }
+
+    .contact .row {
+        flex-direction: column; /* Mengubah arah baris menjadi kolom untuk tampilan yang lebih baik */
+    }
+
+    .contact .row .map,
+    .contact .row .form {
+        flex: 1 1 100%; /* Membuat peta dan formulir mengambil 100% lebar */
+        margin-bottom: 2rem; /* Menambahkan margin bawah untuk spasi */
+    }
+
+    .contact .row .form .input-group input {
+        font-size: 1.5rem; /* Mengurangi ukuran font untuk input */
+    }
+
+    .contact .row .form .btn {
+        font-size: 1.5rem; /* Mengurangi ukuran font untuk tombol */
+    }
+
+    .product .text,
+    .contact .text {
+        font-size: 1.2rem; /* Mengurangi ukuran font untuk teks */
+    }
+
+    .product .card {
+        margin: 0; /* Menghapus margin untuk kartu produk */
+    }
+
+    .product .cta {
+        font-size: 1.2rem; /* Mengurangi ukuran font untuk tombol CTA */
+    }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+}
