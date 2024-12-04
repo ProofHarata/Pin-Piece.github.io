@@ -25,7 +25,8 @@ nav .navbar-logo {
     font-style: italic;
 }
 
-nav .navbar-logo span {
+nav .navbar-logo span,
+.pembelian span {
     color: var(--primary);
 }
 
@@ -136,21 +137,28 @@ nav .navbar-logo span {
 
 /* SHOPPING CART END*/
 
+/* CONTENT */
+.content .main {
+    max-height: 600px; /* Atur tinggi maksimum sesuai kebutuhan */
+    overflow-y: auto; /* Tambahkan scroll vertikal jika konten melebihi tinggi */
+    padding: 1rem; /* Pastikan padding tetap ada */
+    border-radius: 5px; /* Tambahkan radius border */
+    background-color: #fff; /* Tambahkan warna latar belakang */
+}
 
-
-/* PRODUCT */
+.content .main .row {
+    margin: 0; /* Hapus margin pada row untuk menghindari overflow */
+}
 .content h2 span {
     color: var(--primary);
 }
-.content h2 {
+.content h2,
+.pembelian h2 {
     text-align: center;
     font-size: 2.6rem;
     font-weight: bold;
     margin-bottom: 2rem;
 }
-/* PRODUCT  END */
-
-/* CONTENT */
 .content .row .breadcrumb .breadcrumb-item a:hover{
     text-decoration: underline;
     font-weight: bold;
@@ -182,8 +190,69 @@ nav .navbar-logo span {
 .content .col{
     transition: 0.3s;
 }
-
 /* CONTENT END */
+
+/* PEMBELIAN */
+.pembelian {
+    max-width: 600px;
+    margin: 10rem auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.8);
+    -webkit-box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.8);
+}
+
+.pembelian h2 {
+    text-align: center;
+    color: #343a40;
+}
+
+.pembelian .form-group {
+    margin-bottom: 15px;
+}
+
+.pembelian .form-label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.pembelian .form-input[type="text"],
+.pembelian .form-input[type="number"],
+.pembelian .form-input[type="email"], /* Menambahkan gaya untuk input email */
+.pembelian .form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.pembelian .form-input[type="text"]:focus,
+.pembelian .form-input[type="number"]:focus,
+.pembelian .form-input[type="email"]:focus, /* Menambahkan fokus untuk input email */
+.pembelian .form-textarea:focus {
+    border-color: #80bdff;
+    outline: none;
+}
+
+.pembelian .form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pembelian .form-button:hover {
+    background-color: #0056b3;
+}
+/* PEMBELIAN END */
 
 /* MEDIA QUERY */
 @media (max-width: 768px) {

@@ -29,7 +29,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="navbar-logo">Kelompok<span>Kami</span></a>
+                        <a href="index.html" class="navbar-logo">Pin<span>&Piece</span></a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <a class="border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="index.html#home">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#" id="shopping-cart">
+                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#pembelian" id="shopping-cart">
                         <li data-feather="shopping-cart"></li>
                     </a>
                     <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form.html" target="_blank">
@@ -88,35 +88,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- SHOPPING CART -->
-        <div class="shopping-cart-buy">
-            <div class="cart-item">
-                <img src="img/product (1).jpg" alt="Product 1">
-                <div class="item-detail">
-                    <h3>Product 1</h3>
-                    <div class="item-price">Rp. 100.000</div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-            <div class="cart-item">
-                <img src="img/product (1).jpg" alt="Product 1">
-                <div class="item-detail">
-                    <h3>Product 1</h3>
-                    <div class="item-price">Rp. 100.000</div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-            <div class="cart-item">
-                <img src="img/product (1).jpg" alt="Product 1">
-                <div class="item-detail">
-                    <h3>Product 1</h3>
-                    <div class="item-price">Rp. 100.000</div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-        </div>
-        <!-- SHOPPING CART END -->
     </nav>
     <!-- END NAVBAR -->
 
@@ -639,6 +610,37 @@
         </div>
     </section>
     <!-- CONTENT END -->
+
+    <!-- PEMBELIAN PRODUCT -->
+    <div class="pembelian" id="pembelian">
+        <h2>Form <span>Pembelian</span></h2>
+        <form id="purchase-form" method="POST" accept-charset="utf-8">
+            <div class="form-group">
+                <label class="form-label" for="name">Nama</label>
+                <input placeholder="Nama Anda" name="name" type="text" class="form-input" id="name" required />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="phone">Nomor Telepon</label>
+                <input placeholder="62812xxxx" name="phone" type="number" class="form-input" id="phone" required />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input placeholder="Email Anda" name="email" type="email" class="form-input" id="email" required />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="product-id">ID Produk</label>
+                <input placeholder="ID Produk" name="product_id" type="text" class="form-input" id="product-id" required />
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="address">Alamat</label>
+                <textarea class="form-textarea" rows="4" id="address" name="address" placeholder="Alamat Anda"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="btn-whatsapp" class="form-button">Kirim</button>
+            </div>
+        </form>
+    </div>
+    <!-- PEMBELIAN PRODUCT END -->
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 text-white py-10">
