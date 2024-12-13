@@ -32,3 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
 function product() {
     window.location.href = 'kategori.html';
 }
+
+// Contact Us
+document.getElementById('sendMessage').addEventListener('click', function() {
+    // Ambil nilai dari input
+    const name = document.querySelector('input[placeholder="Nama"]').value;
+    const email = document.querySelector('input[placeholder="E-Mail"]').value;
+    const phone = document.querySelector('input[placeholder="No.HP"]').value;
+
+    // Buat pesan yang akan dikirim
+    const message = `Nama: ${name}\nE-Mail: ${email}\nNo.HP: ${phone}`;
+
+    // Ganti nomor telepon di bawah dengan nomor WhatsApp Anda
+    const phoneNumber = '081413263843'; // Ganti dengan nomor WhatsApp Anda
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    // Arahkan ke URL WhatsApp
+    window.open(whatsappUrl, '_blank');
+});

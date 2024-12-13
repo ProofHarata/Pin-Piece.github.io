@@ -139,7 +139,7 @@ nav .navbar-logo span,
 
 /* CONTENT */
 .content .main {
-    max-height: 600px; /* Atur tinggi maksimum sesuai kebutuhan */
+    max-height: 100rem; /* Atur tinggi maksimum sesuai kebutuhan */
     overflow-y: auto; /* Tambahkan scroll vertikal jika konten melebihi tinggi */
     padding: 1rem; /* Pastikan padding tetap ada */
     border-radius: 5px; /* Tambahkan radius border */
@@ -189,6 +189,30 @@ nav .navbar-logo span,
 }
 .content .col{
     transition: 0.3s;
+}
+.content .card-text {
+    display: flex; /* Menampilkan bintang dalam satu baris */
+}
+
+.content .card-text a {
+    text-decoration: none; /* Menghilangkan garis bawah */
+}
+
+.content .card-text .star {
+    font-size: 30px; /* Ukuran bintang */
+    color: gray; /* Warna default bintang */
+    transition: color 0.1s ease; /* Transisi halus saat hover */
+}
+
+.content .card-text .star:hover,
+.content .card-text .star:hover ~ .star {
+    color: yellow; /* Warna bintang saat di-hover */
+    fill: yellow;
+}
+
+.content .card-text .star.selected,
+.content .card-text .star.selected ~ .star {
+    color: yellow; /* Warna bintang yang terisi */
 }
 /* CONTENT END */
 

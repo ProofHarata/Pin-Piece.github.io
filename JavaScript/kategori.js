@@ -273,3 +273,26 @@ document.getElementById('btn-whatsapp').onclick = function(event) {
     // Membuka URL WhatsApp di tab baru
     window.open(whatsappUrl, '_blank');
 };
+
+//RATING BINTANG
+feather.replace();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function(event) {
+                event.preventDefault(); // Mencegah link default
+
+                // Menghapus kelas 'selected' dari semua bintang
+                document.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
+                
+                // Menambahkan kelas 'selected' pada bintang yang dipilih
+                this.classList.add('selected');
+                
+                // Menandai semua bintang sebelumnya sebagai terisi
+                let currentStar = this;
+                while (currentStar = currentStar.previousElementSibling) {
+                    currentStar.classList.add('selected');
+                }
+            });
+        });
+    });
