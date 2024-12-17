@@ -279,7 +279,8 @@ document.getElementById('btn-whatsapp').onclick = function(event) {
     var address = document.getElementById('address').value;
 
     // Membuat pesan untuk WhatsApp
-    var message = "Nama: " + name + 
+    var message = "Pembelian :" + 
+                "\nNama: " + name + 
                 "\nNomor Telepon: " + phone + 
                 "\nEmail: " + email + // Menambahkan email ke pesan
                 "\nID Produk: " + productId + // Menambahkan ID produk ke pesan
