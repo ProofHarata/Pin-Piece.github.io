@@ -14,18 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     closeCart.addEventListener('click', function() {
         cartContainer.style.display = 'none'; // Sembunyikan cart-container
     });
-
-    // Memeriksa localStorage saat halaman dimuat
-    if (localStorage.getItem('clickedSidebarTopi') === 'true') {
-        sidebarTopi(); 
-        localStorage.removeItem('clickedSidebarTopi');
-    } else if (localStorage.getItem('clickedSidebarKacamata') === 'true') {
-        sidebarKacamata(); 
-        localStorage.removeItem('clickedSidebarKacamata');
-    } else if (localStorage.getItem('clickedSidebarJamTangan') === 'true') {
-        sidebarJamTangan(); 
-        localStorage.removeItem('clickedSidebarJamTangan');
-    }
 });
 
 // Fungsi untuk mengatur kategori dan redirect

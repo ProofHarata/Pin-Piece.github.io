@@ -242,6 +242,24 @@ function home() {
         product.style.display = 'block';
     });
 }
+function setProductId(button) {
+    const productId = button.getAttribute('data-product-id');
+    const productIdField = document.getElementById('product-id');
+    
+    // Ambil nilai yang sudah ada di field
+    const existingIds = productIdField.value.split(',').map(id => id.trim());
+    
+    // Tambahkan ID baru jika belum ada
+    if (!existingIds.includes(productId)) {
+        // Jika field kosong, tambahkan ID tanpa koma
+        if (productIdField.value.trim() === '') {
+            productIdField.value = productId;
+        } else {
+            // Jika tidak kosong, tambahkan ID dengan koma
+            productIdField.value += ', ' + productId;
+        }
+    }
+}
 
 // SHOPPING CART
 const cart = document.querySelector('.shopping-cart-buy')
