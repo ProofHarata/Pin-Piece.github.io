@@ -1,0 +1,173 @@
+<!-- CONTENT -->
+    <section class="content" style="margin-top: 150px;">
+        <div class="container">
+            <div class="row breadcrumb-container">
+                <nav aria-label="breadcrumb" id="Normal-Sidebar" x-show="activeSidebar === ''">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active font-bold" aria-current="page">Home /</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-jam" x-show="activeSidebar === 'jamtangan'">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Jam Tangan</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-kacamata" x-show="activeSidebar === 'kacamata'">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Kacamata</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-topi" x-show="activeSidebar === 'topi'">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Topi</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-kalung" x-show="activeSidebar === 'kalung'">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Kalung</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-cincin" x-show="activeSidebar === 'cincin'">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Cincin</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-gelang" x-show="activeSidebar === 'gelang'">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Gelang</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="row product">
+                <div class="sidebar col-3"> <!-- Sidebar on top for mobile -->
+                    <div class="kategori">
+                        <h3 class="font-bold" style="font-size: 30px;">Kategori</h3>
+                        <ul class="list-group custom-list-group">
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('topi'); currentType = 'topi'">Topi</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('cincin'); currentType = 'cincin'">Cincin</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('gelang'); currentType = 'gelang'">Gelang</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('kalung'); currentType = 'kalung'">Kalung</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('kacamata'); currentType = 'kacamata'">Kacamata</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('jamtangan'); currentType = 'jamtangan'">Jam tangan</a></li>
+                        </ul>
+                    </div>
+                    <div class="harga">
+                        <h3 class="font-bold" style="font-size: 30px;">Harga</h3>
+                        <form action="" class="price-list">
+                            <ul class="list-group custom-list-group">
+                                <li><a href=""><input type="radio"> Rp 0 - Rp 100.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 100.000 - Rp 250.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 250.000 - Rp 500.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 500.000 - Rp 750.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 750.000 - Rp 1.000.000</a></li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="product col-9"> <!-- Main content -->
+                    <div class="head text-center">
+                        <h2>Aksesoris Modis Dari Berbagai Brand</h2>
+                    </div>
+                    <div class="main row">
+                        <template x-for="(item, index) in items" x-key="index">
+                            <!-- Product Cards -->
+                            <div class="col-4" x-show="item.type === currentType || currentType === ''">
+                                <div class="card-main">
+                                    <img :src="`img/${item.img}`" class="card-img-top" :alt="item.name">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <p class="card-title">Adidas</p>
+                                                <p class="card-text" x-text="item.name"></p>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="" @Click.prevent="$store.cart.add(item)" class="text-black" id="bookmark">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p x-text="rupiah(item.price)"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Repeat for more products -->
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTENT END -->
+
+    .content .container {
+        margin: 0;
+      }
+      .content .container .kategori,
+      .content .container .harga {
+        height: 17rem;
+        padding-left: 1rem;
+        border-radius: 10px;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        box-shadow: 0px 0px 30px -15px rgba(0,0,0,0.8);
+      -webkit-box-shadow: 0px 0px 30px -15px rgba(0,0,0,0.8);
+      -moz-box-shadow: 0px 0px 30px -15px rgba(0,0,0,0.8);
+      }
+      .content .container .kategori li {
+        border-bottom: 1px solid #ddd;
+      }
+      .content .container .sidebar .harga {
+        height: 15rem;
+      }
+      .content .container .harga ul{
+        list-style: none;
+        padding-left: 0;
+      }
+      .content .container .row .sidebar .harga a {
+        text-decoration: none;
+        font-weight: 400;
+        color: black;
+      }
+      .content h2 {
+          text-align: left;
+          font-size: 2rem;
+          font-weight: 400;
+          margin-bottom: 1rem;
+      }
+      .content .row .breadcrumb .breadcrumb-item a:hover{
+          text-decoration: underline;
+          font-weight: bold;
+      }
+      .content .container .list-group a:hover{
+          font-weight: bold;
+          text-decoration: underline;
+      }
+      .content .container .list-group li {
+          margin-top: 10px;
+      }
+      
+      .content .card-img-top {
+        height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+      
+      }
+      .content .card-body {
+        padding: 10px;
+      }
+      .content .card-title {
+        font-weight: bold;
+      }
+      .content .card-text {
+          font-size: 0.9rem;
+      } 

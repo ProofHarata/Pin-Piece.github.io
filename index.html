@@ -12,240 +12,210 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
 
     <!-- My Style -->
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link href="CSS/output.css" rel="stylesheet">
     
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     
     <!-- Framework -->
-    <link rel="stylesheet" href="bootstrap/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/> -->
 </head>
 <body>
-<!-- NAVBAR -->
-<nav class="bg-white shadow-md fixed top-0 w-full z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="" class="navbar-logo no-underline text-black">Pin<span>&Piece</span></a>
+    <!-- LOADING SCREEN -->
+    <div class="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+    <!-- LOADING SCREEN END -->
+    
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <a href="" class="navbar-logo no-underline text-black">Pin<span>&Piece</span></a>
+        </div>
+        <div class="navigation">
+            <ul>
+                <li class="light"><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Product</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
+        <div class="search-form">
+            <a href="#" id="shopping-cart">
+                <li data-feather="shopping-cart" class="text-black"></li>
+            </a>
+            <div class="cart-container" id="cart-container">
+                <div class="cart-header">
+                    <i data-feather="x" id="close-cart" style="cursor: pointer;"></i>
+                    <p>Diskon,Promo,& Voucher Untuk Anda</p>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a class="border-green-500 text-black no-underline inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#home">
-                        Home
-                    </a>
-                    <a class="border-transparent text-black hover:border-gray-300 hover:text-gray-300 no-underline inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#about">
-                        About
-                    </a>
-                    <a class="border-transparent text-black hover:border-gray-300 hover:text-gray-300 no-underline inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#product">
-                        Product
-                    </a>
-                    <a class="border-transparent text-black hover:border-gray-300 hover:text-gray-300 no-underline inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#contact">
-                        Contact
-                    </a>
+                <div class ="cart-content">
+                    <h2>Belanjaan Kamu Kosong</h2>
+                    <button onclick="product()">Topi</button>
+                    <button onclick="product()">Gelang</button>
+                    <button onclick="product()">Kalung</button>
+                    <button onclick="product()">Cincin</button>
+                    <button onclick="product()">Kacamata</button>
+                    <button onclick="product()">Jam Tangan</button>
                 </div>
             </div>
-            <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                <a class="px-3 py-2 rounded-md text-sm font-medium" href="#" id="shopping-cart">
-                    <li data-feather="shopping-cart" class="text-black"></li>
-                </a>
-                <div class="cart-container" id="cart-container">
-                    <div class="cart-header">
-                        <i data-feather="x" id="close-cart"></i>
-                        <p>Diskon,Promo,& Voucher Untuk Anda</p>
+            <a href="Form.html" target="_blank" id="user">
+                <li data-feather="user" class="text-black"></li>
+            </a>
+            <a href="#" id="menu">
+                <i data-feather="menu" class="text-black"></i>
+            </a>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <main class="content">
+            <h1>Mari Belanja<br><span>Aksesoris</span> Di Sini</h1>
+            <p>Temukan berbagai aksesoris unik dan stylish yang akan melengkapi penampilan Anda. Dari jam tangan hingga perhiasan, kami memiliki semuanya!</p>
+            <a href="https://wa.me/6281413263843" class="cta no-underline text-white">Beli Sekarang</a>
+        </main>
+    </section>
+    <!-- HERO SECTION END -->
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h2><span>Tentang</span> Kami</h2>
+        <div class="row">
+            <div class="about-img">
+                <img src="img/about.jpg" alt="Tentang Kami">
+            </div>
+            <div class="content">
+                <h3>Kenapa Membeli Di Sini?</h3>
+                <p>Kami menawarkan produk berkualitas tinggi dengan harga yang bersaing. Setiap produk dirancang dengan perhatian terhadap detail dan keindahan.</p>
+                <p>Dengan pengalaman bertahun-tahun di industri ini, kami berkomitmen untuk memberikan pelayanan terbaik kepada pelanggan kami. Bergabunglah dengan komunitas kami dan nikmati pengalaman berbelanja yang menyenangkan!</p>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT END -->
+
+    <!-- PRODUCT -->
+    <section class="product" id="product">
+        <h2><span>Product </span> Kami</h2>
+        <p class="text">Jelajahi koleksi produk kami yang beragam, dirancang untuk memenuhi kebutuhan gaya hidup Anda. Setiap produk kami dipilih dengan cermat untuk memastikan kualitas dan kepuasan pelanggan.</p>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col atas">
+                <h2>Jam Tangan</h2>
+                <p>Jam tangan stylish dengan ketahanan air dan desain modern.</p>
+                <img src="img/kategori (3).jpg" alt="Product">
+                <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
+            </div>
+            <div class="col atas">
+                <h2>Kacamata</h2>
+                <p>Kacamata trendy yang melindungi dari sinar UV.</p>
+                <img src="img/kategori (2).jpg" alt="Product">
+                <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
+            </div>
+            <div class="col atas">
+                <h2>Topi</h2>
+                <p>Topi modis yang nyaman dan stylish untuk setiap kesempatan.</p>
+                <img src="img/kategori (1).jpg" alt="Product">
+                <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
+            </div>
+            <div class="col bawah">
+                <h2>Gelang</h2>
+                <p>Gelang elegan yang menambah pesona pada penampilan Anda.</p>
+                <img src="img/kategori (4).jpeg" alt="Product">
+                <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
+            </div>
+            <div class="col bawah">
+                <h2>Kalung</h2>
+                <p>Kalung unik yang sempurna untuk melengkapi gaya Anda.</p>
+                <img src="img/kategori (5).jpeg" alt="Product">
+                <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
+            </div>
+            <div class="col bawah">
+                <h2>Cincin</h2>
+                <p>Cincin cantik dengan desain menawan untuk setiap acara.</p>
+                <img src="img/kategori (6).jpeg" alt="Product">
+                <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
+            </div>
+        </div>
+    </section>
+    <!-- PRODUCT END -->
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <h2><span>Contact</span> Kami</h2>
+        <p class="text">Kami ingin mendengar dari Anda! Jika Anda memiliki pertanyaan atau umpan balik, jangan ragu untuk menghubungi kami. Tim kami siap membantu Anda dengan segala kebutuhan Anda.</p>
+
+        <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7606820004685!2d106.85944907409731!3d-6.295149261611151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed80b84ac47d%3A0x640561dd89719c88!2sUniversitas%20Indraprasta%20PGRI%20(UNINDRA)%2C%20Kampus%20B!5e0!3m2!1sid!2sid!4v1732630067191!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            
+            <form action="" class="form">
+                <div class="input-group">
+                    <i data-feather="user"></i>
+                    <input type="text" placeholder="Nama">
+                </div>
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="text" placeholder="E-Mail">
+                </div>
+                <div class="input-group">
+                    <i data-feather="phone"></i>
+                    <input type="text" placeholder="No.HP">
+                </div>
+                <button type="button" class="btn" id="sendMessage">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+    <!-- CONTACT END -->
+
+    <!-- FOOTER -->
+    <footer class="custom-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2 class="footer-title">PIN<span>&PIECE</span></h2>
+                    <div class="social-icons">
+                        <a href=""><i data-feather="instagram"></i></a>
+                        <a href=""><i data-feather="facebook"></i></a>
+                        <a href=""><i data-feather="twitter"></i></a>
+                        <a href=""><i data-feather="mail"></i></a>
                     </div>
-                    <div class ="cart-content">
-                        <h2>Belanjaan Kamu Kosong</h2>
-                        <button onclick="product()">Topi</button>
-                        <button onclick="product()">Gelang</button>
-                        <button onclick="product()">Kalung</button>
-                        <button onclick="product()">Cincin</button>
-                        <button onclick="product()">Kacamata</button>
-                        <button onclick="product()">Jam Tangan</button>
-                    </div>
                 </div>
-                <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form.html" target="_blank">
-                    <li data-feather="user" class="text-black"></li>
-                </a>
+                <div class="footer-section">
+                    <h3 class="footer-subtitle">Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home" class="footer-link">Home</a></li>
+                        <li><a href="index.html#about" class="footer-link">About</a></li>
+                        <li><a href="index.html#product" class="footer-link">Product</a></li>
+                        <li><a href="index.html#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-subtitle">Contact</h3>
+                    <ul class="footer-contact">
+                        <li>+62 814-1326-3843</li>
+                        <li>fazafaqihalawi@gmail.com</li>
+                    </ul>
+                </div>
             </div>
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" type="button" onclick="toggleMobileMenu()">
-                    <span class="sr-only">Open main menu</span>
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="sm:hidden" id="mobile-menu" style="display: none;">
-        <div class="pt-2 pb-3 space-y-1">
-            <a class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium no-underline text-white" href="#home">
-                Home
-            </a>
-            <a class="border-transparent text-white hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium no-underline" href="#about">
-                About
-            </a>
-            <a class="border-transparent text-white hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium no-underline" href="#product">
-                Product
-            </a>
-            <a class="border-transparent text-white hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium no-underline" href="#contact">
-                Contact
-            </a>
-        </div>
-        <div class="pt-4 pb-3 border-t border-gray-200">
-            <div class="flex items-center px-4">
-                <a class="px-3 py-2 rounded-md text-sm font-medium no-underline text-white" href="#">
-                    <li data-feather="shopping-cart"></li>
-                </a>
-                <a class="px-3 py-2 rounded-md text-sm font-medium no-underline text-white" href="#">
-                    <li data-feather="user"></li>
-                </a>
+            <div class="footer-bottom">
+                <p>Copyright © 2023 Pin&Piece. Kami berkomitmen untuk menjaga privasi Anda dan memberikan pengalaman berbelanja yang aman dan menyenangkan.</p>
+                <p>Privacy policy | Dibuat dengan <span class="footer-heart">❤</span> untuk Anda.</p>
             </div>
         </div>
-    </div>
-</nav>
-<!-- END NAVBAR -->
+    </footer>
+    <!-- FOOTER END -->
 
-<!-- HERO SECTION -->
-<section class="hero" id="home">
-    <main class="content">
-        <h1>Mari Belanja<br><span>Aksesoris</span> Di Sini</h1>
-        <p>Temukan berbagai aksesoris unik dan stylish yang akan melengkapi penampilan Anda. Dari jam tangan hingga perhiasan, kami memiliki semuanya!</p>
-        <a href="https://wa.me/6281413263843" class="cta no-underline text-white">Beli Sekarang</a>
-    </main>
-</section>
-<!-- HERO SECTION END -->
-
-<!-- ABOUT -->
-<section class="about" id="about">
-    <h2><span>Tentang</span> Kami</h2>
-    <div class="row">
-        <div class="about-img">
-            <img src="img/about.jpg" alt="Tentang Kami">
-        </div>
-        <div class="content">
-            <h3>Kenapa Membeli Di Sini?</h3>
-            <p>Kami menawarkan produk berkualitas tinggi dengan harga yang bersaing. Setiap produk dirancang dengan perhatian terhadap detail dan keindahan.</p>
-            <p>Dengan pengalaman bertahun-tahun di industri ini, kami berkomitmen untuk memberikan pelayanan terbaik kepada pelanggan kami. Bergabunglah dengan komunitas kami dan nikmati pengalaman berbelanja yang menyenangkan!</p>
-        </div>
-    </div>
-</section>
-<!-- ABOUT END -->
-
-<!-- PRODUCT -->
-<section class="product" id="product">
-    <h2><span>Product </span> Kami</h2>
-    <p class="text">Jelajahi koleksi produk kami yang beragam, dirancang untuk memenuhi kebutuhan gaya hidup Anda. Setiap produk kami dipilih dengan cermat untuk memastikan kualitas dan kepuasan pelanggan.</p>
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <h2>Jam Tangan</h2>
-            <p>Jam tangan stylish dengan ketahanan air dan desain modern.</p>
-            <img src="img/kategori (3).jpg" alt="Product">
-            <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
-        </div>
-        <div class="col">
-            <h2>Kacamata</h2>
-            <p>Kacamata trendy yang melindungi dari sinar UV.</p>
-            <img src="img/kategori (2).jpg" alt="Product">
-            <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
-        </div>
-        <div class="col">
-            <h2>Topi</h2>
-            <p>Topi modis yang nyaman dan stylish untuk setiap kesempatan.</p>
-            <img src="img/kategori (1).jpg" alt="Product">
-            <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
-        </div>
-        <div class="col">
-            <h2>Gelang</h2>
-            <p>Gelang elegan yang menambah pesona pada penampilan Anda.</p>
-            <img src="img/kategori (4).jpeg" alt="Product">
-            <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
-        </div>
-        <div class="col">
-            <h2>Kalung</h2>
-            <p>Kalung unik yang sempurna untuk melengkapi gaya Anda.</p>
-            <img src="img/kategori (5).jpeg" alt="Product">
-            <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
-        </div>
-        <div class="col">
-            <h2>Cincin</h2>
-            <p>Cincin cantik dengan desain menawan untuk setiap acara.</p>
-            <img src="img/kategori (6).jpeg" alt="Product">
-            <a href="kategori.html" class="cta no-underline">BELI SEKARANG</a>
-        </div>
-    </div>
-</section>
-<!-- PRODUCT END -->
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-    <h2><span>Contact</span> Kami</h2>
-    <p class="text">Kami ingin mendengar dari Anda! Jika Anda memiliki pertanyaan atau umpan balik, jangan ragu untuk menghubungi kami. Tim kami siap membantu Anda dengan segala kebutuhan Anda.</p>
-
-    <div class="row">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7606820004685!2d106.85944907409731!3d-6.295149261611151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed80b84ac47d%3A0x640561dd89719c88!2sUniversitas%20Indraprasta%20PGRI%20(UNINDRA)%2C%20Kampus%20B!5e0!3m2!1sid!2sid!4v1732630067191!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
-        
-        <form action="" class="form">
-            <div class="input-group">
-                <i data-feather="user"></i>
-                <input type="text" placeholder="Nama">
-            </div>
-            <div class="input-group">
-                <i data-feather="mail"></i>
-                <input type="text" placeholder="E-Mail">
-            </div>
-            <div class="input-group">
-                <i data-feather="phone"></i>
-                <input type="text" placeholder="No.HP">
-            </div>
-            <button type="button" class="btn" id="sendMessage">Kirim Pesan</button>
-        </form>
-    </div>
-</section>
-<!-- CONTACT END -->
-
-<!-- FOOTER -->
-<footer class="bg-gray-900 text-white py-10">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-wrap justify-between">
-            <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                <h2 class="text-xl font-bold mb-4">PIN & PIECE</h2>
-            </div>
-            <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                <h3 class="text-lg font-semibold mb-2">Links</h3>
-                <ul style="padding: 0;">
-                    <li><a href="index.html#home" class="hover:underline no-underline text-white">Home</a></li>
-                    <li><a href="index.html#about" class="hover:underline no-underline text-white">About</a></li>
-                    <li><a href="index.html#product" class="hover:underline no-underline text-white">Product</a></li>
-                    <li><a href="index.html#contact" class="hover:underline no-underline text-white">Contact</a></li>
-                </ul>
-            </div>
-            <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                <h3 class="text-lg font-semibold mb-2">Contact</h3>
-                <ul style="padding: 0;">
-                    <li>+62 814-1326-3843</li>
-                    <li>fazafaqihalawi@gmail.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-10 text-center text-sm">
-            <p>Copyright © 2023 Pin&Piece. Kami berkomitmen untuk menjaga privasi Anda dan memberikan pengalaman berbelanja yang aman dan menyenangkan.</p>
-            <p>Privacy policy | Dibuat dengan <span class="text-red-500">❤</span> untuk Anda.</p>
-        </div>
-    </div>
-</footer>
-<!-- FOOTER END -->
-<script src="bootstrap/script.js"></script>
-<script src="JavaScript/index.js"></script>
-<script>
-    feather.replace();
-    function toggleMobileMenu() {
-        const mobileMenu = document.getElementById('mobile-menu');
-        const isExpanded = mobileMenu.style.display === 'block';
-        mobileMenu.style.display = isExpanded ? 'none' : 'block';
-    }
-</script>
+    <!-- Jquery JavaScript -->
+    <script src="JavaScript/jquery-3.7.1.min.js"></script>
+    <script src="JavaScript/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="JavaScript/index.js"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>

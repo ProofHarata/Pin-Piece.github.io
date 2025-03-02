@@ -13,867 +13,231 @@
 
     <!-- My Style -->
     <link rel="stylesheet" href="CSS/style1.css">
+
+    <!-- Alpine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Midtrans -->
+    <script type="text/javascript"
+    src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-IXMuMNo1eDAE0Y6A"></script>
     
     <!-- Framework -->
-    <link rel="stylesheet" href="bootstrap/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/> -->
 </head>
-<body>
+<body x-data="app()">
+    <!-- LOADING SCREEN -->
+    <div class="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+    <!-- LOADING SCREEN END -->
+    
     <!-- NAVBAR -->
-    <nav class="bg-white shadow-md fixed top-0 w-full z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="navbar-logo">Pin<span>&Piece</span></a>
+    <nav class="nav-container">
+        <div class="logo">
+            <a href="index.html" class="navbar-logo no-underline text-black">Pin<span>&Piece</span></a>
+        </div>
+        <div class="navigation">
+            <ul>
+                <li class="light"><a href="index.html">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Product</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Search Form -->
+        <div class="custom-header">
+            <a class="shopping" href="#" id="shopping-cart">
+                <li data-feather="shopping-cart" class="icon"></li>
+                <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+            </a>
+            <a class="user-icon" href="Form.html" target="_blank">
+                <li data-feather="user" class="icon"></li>
+            </a>
+            <a href="#" id="menu">
+                <i data-feather="menu" class="text-black"></i>
+            </a>
+        </div>
+        <!-- Search Form End -->
+
+        <!-- Shopping-Cart-Buy -->
+        <div class="shopping-cart-buy" id="shopping-cart-buy">
+            <i data-feather="x" class="text-black" id="close-shopping-cart-buy" style="margin-top: 20px; margin-left: 10px; cursor: pointer;"></i>
+            <h4 x-show="$store.cart.items.length">Cart Container</h4>
+            <hr x-show="$store.cart.items.length">
+            <template x-for="(item, index) in $store.cart.items" x-key="index">
+                <div class="cart-item">
+                    <img :src="`img/${item.img}`" :alt="item.name">
+                    <div class="item-detail">
+                        <h3 x-text="item.name"></h3>
+                        <div class="rupiah(item-price)">
+                            <span x-text="rupiah(item.price)"></span> &times;
+                            <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                            <span x-text="item.quantity"></span>
+                            <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+                            <span x-text="rupiah(item.total)"></span>
+                        </div>
                     </div>
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a class="border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="index.html#home">
-                            Home
-                        </a>
-                        <a class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="index.html#about">
-                            About
-                        </a>
-                        <a class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="index.html#product">
-                            Product
-                        </a>
-                        <a class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="index.html#contact">
-                            Contact
-                        </a>
-                    </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#pembelian" id="shopping-cart">
-                        <li data-feather="shopping-cart"></li>
-                    </a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="Form.html" target="_blank">
-                        <li data-feather="user"></li>
-                    </a>
-                </div>
-                <div class="-mr-2 flex items-center sm:hidden">
-                    <button id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" type="button" onclick="toggleMobileMenu()">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+            </template>
+            <h4 x-show="!$store.cart.items.length">Cart Is Empty</h4>
+            <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
+
+            <div class="form-container" x-show="$store.cart.items.length">
+                <form action="" id="checkoutForm" autocomplete="off" > 
+                    <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)">
+                    <input type="hidden" name="total" x-model="$store.cart.total">
+                    <h5>Customer Detail</h5>
+
+                    <label for="name">
+                        <span>Name</span>
+                        <input type="text" name="name" id="name">
+                    </label>
+
+                    <label for="email">
+                        <span>Email</span>
+                        <input type="email" name="email" id="email">
+                    </label>
+
+                    <label for="phone">
+                        <span>Phone</span>
+                        <input type="number" name="phone" id="phone" autocomplete="off">
+                    </label>
+
+                    <button class="checkout-button disabled" type="submit" id="checkout-button" value="checkout" disabled>Checkout</button>
+                </form>
             </div>
         </div>
-        <div class="sm:hidden" id="mobile-menu" style="display: none;">
-            <div class="pt-2 pb-3 space-y-1">
-                <a class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="index.html#home">
-                    Home
-                </a>
-                <a class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="index.html#about">
-                    About
-                </a>
-                <a class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="index.htm#product">
-                    Product
-                </a>
-                <a class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium" href="index.html#contact">
-                    Contact
-                </a>
-            </div>
-            <div class=" pt-4 pb-3 border-t border-gray-200">
-                <div class="flex items-center px-4">
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#">
-                        <li data-feather="shopping-cart"></li>
-                    </a>
-                    <a class="px-3 py-2 rounded-md text-sm font-medium" href="#">
-                        <li data-feather="user"></li>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <!-- Shopping-Cart-Buy End -->
     </nav>
     <!-- END NAVBAR -->
 
     <!-- CONTENT -->
-    <section class="content" style="margin-top: 150px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-3 order-md-1 order-0"> <!-- Sidebar on top for mobile -->
-                    <nav aria-label="breadcrumb" id="Normal-Sidebar">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active font-bold" aria-current="page">Home /</li>
-                        </ol>
-                    </nav>
-                    <nav aria-label="breadcrumb" id="Sidebar-jam">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
-                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Jam Tangan</li>
-                        </ol>
-                    </nav>
-                    <nav aria-label="breadcrumb" id="Sidebar-kacamata">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
-                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Kacamata</li>
-                        </ol>
-                    </nav>
-                    <nav aria-label="breadcrumb" id="Sidebar-topi">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
-                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Topi</li>
-                        </ol>
-                    </nav>
-                    <nav aria-label="breadcrumb" id="Sidebar-kalung">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
-                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Kalung</li>
-                        </ol>
-                    </nav>
-                    <nav aria-label="breadcrumb" id="Sidebar-cincin">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
-                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Cincin</li>
-                        </ol>
-                    </nav>
-                    <nav aria-label="breadcrumb" id="Sidebar-gelang">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item fw-semibold"><button onclick="home()">Home</button></li>
-                            <li class="breadcrumb-item active fw-semibold" aria-current="page">Gelang</li>
-                        </ol>
-                    </nav>
-                    <h3 class="font-bold" style="font-size: 30px;">Aksesoris Unisex</h3>
-                    <ul class="list-group custom-list-group">
-                        <li><a href="#" onclick="sidebarTopi()">Topi</a></li>
-                        <li><a href="#" onclick="sidebarCincin()">Cincin</a></li>
-                        <li><a href="#" onclick="sidebarGelang()">Gelang</a></li>
-                        <li><a href="#" onclick="sidebarKalung()">Kalung</a></li>
-                        <li><a href="#" onclick="sidebarKacamata()">Kacamata</a></li>
-                        <li><a href="#" onclick="sidebarJamTangan()">Jam tangan</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-9 order-md-2"> <!-- Main content -->
-                    <div class="head text-center">
-                        <h2><span>Kategori</span> Product</h2>
+    <section class="content">
+        <div class="content-container">
+            <div class="row breadcrumb-container">
+                <nav aria-label="breadcrumb" id="Normal-Sidebar" x-show="activeSidebar === ''" x-cloak>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active font-bold" aria-current="page">Home /</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-jam" x-show="activeSidebar === 'jamtangan'" x-cloak>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Jam Tangan</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-kacamata" x-show="activeSidebar === 'kacamata'" x-cloak>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Kacamata</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-topi" x-show="activeSidebar === 'topi'" x-cloak>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Topi</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-kalung" x-show="activeSidebar === 'kalung'" x-cloak>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Kalung</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-cincin" x-show="activeSidebar === 'cincin'" x-cloak>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Cincin</li>
+                    </ol>
+                </nav>
+                <nav aria-label="breadcrumb" id="Sidebar-gelang" x-show="activeSidebar === 'gelang'" x-cloak>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item fw-semibold"><button @click="home()">Home</button></li>
+                        <li class="breadcrumb-item active fw-semibold" aria-current="page">Gelang</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="row filter">    
+                <button class="filter btn btn-primary">
+                    <span>Semua Filter</span>
+                    <img src="img/filter-svgrepo-com.svg" id="filter-icon">
+                </button>
+            </div>
+            <div class="row product">
+                <div class="sidebar"> <!-- Sidebar on top for mobile -->
+                    <div class="close">
+                        <a href="#" id="close-icon">
+                            <i data-feather="x" class="text-black"></i>
+                        </a>
+                        <h2 class="sidebar-head">Filter</h2>
                     </div>
-                    <div class="main row row-cols-1 row-cols-md-3 g-4">
-                        <!-- Product Cards -->
-                        <div class="col Product-JamTangan product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (1).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Sea-Dweller Deepsea D-Blue(J001)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
+                    <div class="kategori">
+                        <h3 class="font-bold">Kategori</h3>
+                        <ul class="list-group custom-list-group">
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('topi'); currentType = 'topi'">Topi</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('cincin'); currentType = 'cincin'">Cincin</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('gelang'); currentType = 'gelang'">Gelang</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('kalung'); currentType = 'kalung'">Kalung</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('kacamata'); currentType = 'kacamata'">Kacamata</a></li>
+                            <li><a href="#" class="text-black no-underline" @click.prevent="setActiveSidebar('jamtangan'); currentType = 'jamtangan'">Jam tangan</a></li>
+                        </ul>
+                    </div>
+                    <div class="harga">
+                        <h3 class="font-bold">Harga</h3>
+                        <form action="" class="price-list">
+                            <ul class="list-group custom-list-group">
+                                <li><a href=""><input type="radio"> Rp 0 - Rp 100.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 100.000 - Rp 250.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 250.000 - Rp 500.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 500.000 - Rp 750.000</a></li>
+                                <li><a href=""><input type="radio"> Rp 750.000 - Rp 1.000.000</a></li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="product-content"> <!-- Main content -->
+                    <div class="head text-center">
+                        <h2>Aksesoris Modis Dari Berbagai Brand</h2>
+                    </div>
+                    <div class="main row">
+                        <template x-for="(item, index) in items" x-key="index">
+                            <!-- Product Cards -->
+                            <div class="card-container col-4" x-show="item.type === currentType || currentType === ''">
+                                <div class="card-main">
+                                    <div class="star">
+                                        <i data-feather="star" class="star-icon"></i>
+                                        <p class="rate">4.9</p>
                                     </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 207.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="J001" onclick="setProductId(this)">BELI SEKARANG</a>
+                                    <img :src="`img/${item.img}`" class="card-img-top" :alt="item.name">
+                                    <div class="card-body">
+                                        <div class="row atas">
+                                            <div class="text">
+                                                <p class="card-title">Adidas</p>
+                                                <p class="card-text text-truncate d-block overflow-hidden" x-text="item.name"></p>
+                                            </div>
+                                            <div class="icon">
+                                                <a href="" @Click.prevent="$store.cart.add(item)" class="text-black" id="bookmark">
+                                                    <i data-feather="shopping-cart" id="shopping-cart"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="price col-12">
+                                                <p x-text="rupiah(item.price)"></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col Product-Kacamata product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (2).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Robins - Kacamata Segi Enam Anti Radiasi(KC001)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 159.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KC001" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Topi product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (3).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Topi RVCA(T001)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 30.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="T001" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-JamTangan product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (4).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Adriatica Milano watch(J002)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 215.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="J002" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Kacamata product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (5).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Kacamata Centro Comercial (KC002)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 70.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KC002" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Topi product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (6).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Snapback Topi Nike(T002)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 220.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="T002" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Topi product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (7).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Topi Embroidered Fitted(T003)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 200.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="T003" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Gelang product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (8).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Gelang Perpetuity Couple(G001)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 44.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="G001" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Kacamata product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (9).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Kacamata Aviantor Vintage(KC003)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 50.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KC003" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Kacamata product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (10).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Kacamata Bulat(KC004)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 18.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KC004" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Topi product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (11).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Topi Trucker Lidah Pendek(T004)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 60.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="T004" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-JamTangan product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (12).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Jam Tangan Raymond Wail(J003)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 325.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="J003" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Kalung product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (13).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Kalung Piece Out(KA001)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 125.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KA001" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-JamTangan product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (14).jpg" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Jam Tangan PhiLipe Ricci(J004)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 150.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="J004" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Cincin product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (15).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Cincin Opal Signet(C001)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 25.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="C001" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Kalung product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (16).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Kalung liontin berbentuk compass kompas(KA002)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 589.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KA002" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Kalung product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (17).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Kalung Astra Gold(KA003)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 630.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KA003" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Cincin product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (18).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Cincin Lark & Berry Fine(C002)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 188.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="C002" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Cincin product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (19).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Cincin Nomor Keberuntungan(C003)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 758.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="C003" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Gelang product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (20).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Gelang Nama Kustom(G002)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 450.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="G002" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Gelang product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (21).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Gelang rantai pria(G003)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 272.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="G003" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Kalung product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (22).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Kalung Emas Dengan Liontin Buku(KA004)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 98.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="KA004" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Cincin product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (23).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Silver Cincin Moonstone Gold Plated(C004)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 579.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="C004" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col Product-Gelang product">
-                            <div class="card-main card border-0" style="width: 100%;">
-                                <img src="img/product (24).png" class="card-img-top" alt="Product">
-                                <div class="card-body mt-3 mb-3">
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <h4 class="card-title">Gelang Tangan Titanium Wanita(G004)</h4>
-                                            <p class="card-text flex">
-                                                <a href=""><i data-feather="star" class="star" data-value="1"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="2"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="3"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="4"></i></a>
-                                                <a href=""><i data-feather="star" class="star" data-value="5"></i></a>
-                                            </p>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="" id="bookmark"><i data-feather="shopping-cart"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center text-center g-0">
-                                    <div class="col-4">
-                                        <h5>Rp. 135.000</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <a href="#pembelian" class="btn btn-dark w-100 p-3 text-warning" data-product-id="G004" onclick="setProductId(this)">BELI SEKARANG</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Repeat for more products -->
+                            <!-- Repeat for more products -->
+                        </template>
                     </div>
                 </div>
             </div>
@@ -881,78 +245,53 @@
     </section>
     <!-- CONTENT END -->
 
-    <!-- PEMBELIAN PRODUCT -->
-    <div class="pembelian" id="pembelian">
-        <h2>Form <span>Pembelian</span></h2>
-        <form id="purchase-form" method="POST" accept-charset="utf-8">
-            <div class="form-group">
-                <label class="form-label" for="name">Nama</label>
-                <input placeholder="Nama Anda" name="name" type="text" class="form-input" id="name" required />
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="phone">Nomor Telepon</label>
-                <input placeholder="62812xxxx" name="phone" type="number" class="form-input" id="phone" required />
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input placeholder="Email Anda" name="email" type="email" class="form-input" id="email" required />
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="product-id">ID Produk</label>
-                <input placeholder="ID Produk" name="product_id" type="text" class="form-input" id="product-id" required />
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="address">Alamat</label>
-                <textarea class="form-textarea" rows="4" id="address" name="address" placeholder="Alamat Anda"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" id="btn-whatsapp" class="form-button">Kirim</button>
-            </div>
-        </form>
-    </div>
-    <!-- PEMBELIAN PRODUCT END -->
-
     <!-- FOOTER -->
-    <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap justify-between">
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h2 class="text-xl font-bold mb-4">PIN & PIECE</h2>
+    <footer class="custom-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2 class="footer-title">PIN<span>&PIECE</span></h2>
+                    <div class="social-icons">
+                        <a href=""><i data-feather="instagram"></i></a>
+                        <a href=""><i data-feather="facebook"></i></a>
+                        <a href=""><i data-feather="twitter"></i></a>
+                        <a href=""><i data-feather="mail"></i></a>
+                    </div>
                 </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-lg font-semibold mb-2">Links</h3>
-                    <ul>
-                        <li><a href="index.html#home" class="hover:underline">Home</a></li>
-                        <li><a href="index.html#about" class="hover:underline">About</a></li>
-                        <li><a href="index.html#product" class="hover:underline">Product</a></li>
-                        <li><a href="index.html#contact" class="hover:underline">Contact</a></li>
+                <div class="footer-section">
+                    <h3 class="footer-subtitle">Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home" class="footer-link">Home</a></li>
+                        <li><a href="index.html#about" class="footer-link">About</a></li>
+                        <li><a href="index.html#product" class="footer-link">Product</a></li>
+                        <li><a href="index.html#contact" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-lg font-semibold mb-2">Contact</h3>
-                    <ul>
+                <div class="footer-section">
+                    <h3 class="footer-subtitle">Contact</h3>
+                    <ul class="footer-contact">
                         <li>+62 814-1326-3843</li>
                         <li>fazafaqihalawi@gmail.com</li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-10 text-center text-sm">
+            <div class="footer-bottom">
                 <p>Copyright © 2023 Pin&Piece. Kami berkomitmen untuk menjaga privasi Anda dan memberikan pengalaman berbelanja yang aman dan menyenangkan.</p>
-                <p>Privacy policy | Dibuat dengan <span class="text-red-500">❤</span> untuk Anda.</p>
+                <p>Privacy policy | Dibuat dengan <span class="footer-heart">❤</span> untuk Anda.</p>
             </div>
         </div>
     </footer>
     <!-- FOOTER END -->
+
+    <!-- App -->
+    <script src="src/app.js" async></script>
     
-    <script src="bootstrap/script.js"></script>
+    <!-- Jquery JavaScript -->
+    <script src="JavaScript/jquery-3.7.1.min.js"></script>
+    <script src="JavaScript/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <script src="JavaScript/kategori.js"></script>
-    <script>
-        feather.replace();
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const isExpanded = mobileMenu.style.display === 'block';
-            mobileMenu.style.display = isExpanded ? 'none' : 'block';
-        }
-    </script>
+    
 </body>
 </html>
